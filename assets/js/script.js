@@ -1,8 +1,9 @@
 $(document).ready(function () {
-  // Generate time blocks for each hour of the workday
+  
   var startHour = 9;
   var endHour = 17;
   var container = $('.container-lg');
+
   for (var i = startHour; i <= endHour; i++) {
     var hour = dayjs().hour(i).format('h A');
     var timeBlock = $('<div>').addClass('row time-block').attr('id', 'hour-' + [i]).attr('data',[i]);
@@ -15,7 +16,6 @@ $(document).ready(function () {
     container.append(timeBlock);
   }
 
-  // Color-code time blocks based on whether they are in the past, present, or future
   var currentHour = dayjs().hour();
   
   $('.time-block').each(function () {
@@ -29,14 +29,12 @@ $(document).ready(function () {
     }
   });
 
-  // Save events to local storage
   $('.saveBtn').click(function () {
     var eventText = $(this).siblings('.description').val();
     var eventHour = parseInt($(this).siblings('.hour').text());
     localStorage.setItem('hour-' + eventHour, eventText);
   });
 
-  // Retrieve saved events from local storage
   $('.time-block').each(function () {
     var hour = parseInt($(this).find('.hour').text());
     var eventText = localStorage.getItem('hour-' + hour);
@@ -45,7 +43,7 @@ $(document).ready(function () {
     }
   });
 
-  // Display current day at the top of the calendar
   var today = dayjs().format('dddd, MMMM DD');
   $('#currentDay').text(today);
+  
 });
