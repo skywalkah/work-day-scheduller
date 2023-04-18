@@ -7,7 +7,7 @@ $(document).ready(function () {
   for (var i = startHour; i <= endHour; i++) {
     var hour = dayjs().hour(i).format('h A');
     var timeBlock = $('<div>').addClass('row time-block').attr('id', 'hour-' + [i]).attr('data',[i]);
-    var hourBlock = $('<div>').addClass('col-2 col-md-1 hour text-center py-3').text(hour);
+    var hourBlock = $('<div>').addClass('col-2 col-md-1 hour text-center').text(hour);
     var descriptionBlock = $('<textarea>').addClass('col-8 col-md-10 description').attr('rows','3');
     var saveButton = $('<button>').addClass('btn saveBtn col-2 col-md-1').attr('aria-label', 'save')
     var saveIcon = '<i class="fas fa-save" aria-hidden="true"></i>';
